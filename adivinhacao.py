@@ -65,3 +65,7 @@ def start():
     print(f'Sua pontuação final é: {pontuacao} pontos')
     print('Fim do jogo!')
     print('#################################')
+
+
+if __name__ == '__main__':
+    start()
