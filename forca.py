@@ -1,3 +1,4 @@
-print("*********************************")
-print("Bem vindo ao jogo de Forca!")
-print("*********************************")
+def start():
+    print("*********************************")
+    print("Bem vindo ao jogo de Forca!")
+    print("*********************************")
