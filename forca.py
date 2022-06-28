@@ -1,12 +1,26 @@
 import random
 
 
-def start():
+def imprime_cabecalho():
     print("*********************************")
     print("Bem vindo ao jogo de Forca!")
     print("*********************************")
     print("")
     
+    
+def imprime_fim():
+    print("")
+    print('#################################')
+    print('Fim do jogo!')
+    print('#################################')
+    
+    
+def inicializa_letras_acertadas(palavras):
+    letras_acertadas = ["_" for letra in palavras]
+    return letras_acertadas
+
+
+def carregar_palavra():
     palavras = []
     
     with open('palavras.txt') as arquivo:
@@ -15,15 +29,27 @@ def start():
     
     numero = random.randrange(0,len(palavras))
     palavra_secreta = palavras[numero].upper()
+    
+    return palavra_secreta
 
-    letras_acertadas = ["_" for letra in palavra_secreta]
 
+def start():
+    
     enforcou = False
     acertou = False
     erros = 0
-
+    
+    # imprime o cabeçalho do jogo
+    imprime_cabecalho()
+    
+    # carrega a palavra secreta
+    palavra_secreta = carregar_palavra()
+    
+    # inicializa o campo de letras acertadas
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
     print(letras_acertadas)
 
+    # loop do jogo
     while(not enforcou and not acertou):
 
         chute = input("Qual letra? ")
@@ -42,19 +68,16 @@ def start():
         acertou = "_" not in letras_acertadas
         print(letras_acertadas)
 
-
     if(acertou):
         print("Você ganhou!!")
     else:
         print("Você perdeu!!")
     print("Fim do jogo")
+      
+    # imprime o fim do jogo
+    imprime_fim()
     
-    
-    print("")
-    print('#################################')
-    print('Fim do jogo!')
-    print('#################################')
 
-
+# inicia o jogo se o programa for executado diretamente
 if __name__ == '__main__':
     start()
